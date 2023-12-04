@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5 text-center">
+    <span class="title">{{title}}</span>
+    <form class="mt-5" [formGroup]="patientForm">
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Nombre" formControlName="name">
+            <div class="text-danger float-start" *ngIf="patientForm.get('name')?.errors && patientForm.get('name')?.touched"><span>El nombre <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control form-control-lg" placeholder="Edad" formControlName="age">
+            <div class="text-danger float-start" *ngIf="patientForm.get('age')?.errors && patientForm.get('age')?.touched"><span>La edad <strong>es obligatoria</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Obra social" formControlName="socialWork">
+            <div class="text-danger float-start" *ngIf="patientForm.get('socialWork')?.errors && patientForm.get('socialWork')?.touched"><span>La obra social <strong>es obligatoria</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Diagnóstico"formControlName="diagnosis">
+            <div class="text-danger float-start" *ngIf="patientForm.get('diagnosis')?.errors && patientForm.get('diagnosis')?.touched"><span>El diagnóstico <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control form-control-lg" placeholder="Contácto" formControlName="contact">
+            <div class="text-danger float-start" *ngIf="patientForm.get('contact')?.errors && patientForm.get('contact')?.touched"><span>El contacto <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Profesional"formControlName="professional">
+            <div class="text-danger float-start" *ngIf="patientForm.get('professional')?.errors && patientForm.get('professional')?.touched"><span>El profesional <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Servicio" formControlName="service">
+            <div class="text-danger float-start" *ngIf="patientForm.get('service')?.errors && patientForm.get('service')?.touched"><span>El servicio <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Escuela" formControlName="school">
+            <div class="text-danger float-start" *ngIf="patientForm.get('school')?.errors && patientForm.get('school')?.touched"><span>La escuela <strong>es obligatoria</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Dirección de la escuela"formControlName="schoolAddress">
+            <div class="text-danger float-start" *ngIf="patientForm.get('schoolAddress')?.errors && patientForm.get('schoolAddress')?.touched"><span>La dirección de la escuela <strong>es obligatoria</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control form-control-lg" placeholder="Contácto de la escuela"formControlName="schoolContact">
+            <div class="text-danger float-start" *ngIf="patientForm.get('schoolContact')?.errors && patientForm.get('schoolContact')?.touched"><span>El contacto de la escuela <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Maestra" formControlName="teacher">
+            <div class="text-danger float-start" *ngIf="patientForm.get('teacher')?.errors && patientForm.get('teacher')?.touched"><span>La maestra <strong>es obligatoria</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control form-control-lg" placeholder="Contacto d la maestra"formControlName="teacherContact">
+            <div class="text-danger float-start" *ngIf="patientForm.get('teacherContact')?.errors && patientForm.get('teacherContact')?.touched"><span>El contacto de la maestra <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mt-5">
+            <button class="btn btn-secondary btn-lg float-start" routerLink="/pacientes">VOLVER</button>
+            <button class="btn btn-success btn-lg float-end" [disabled]="patientForm.invalid" (click)="addPatient()">ACEPTAR</button>
+            
+        </div>
+
+
+
+    </form>

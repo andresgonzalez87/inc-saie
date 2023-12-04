@@ -1,0 +1,25 @@
+.accordion-container {
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+
+.accordion-item {
+    background-color: #FCF4EA;
+    color: rgb(146, 146, 146);
+}
+
+.accordion-button {
+    border: none;
+    box-shadow: none;
+    background-color: #FCF4EA;
+    color: rgb(146, 146, 146);
+    font-weight: bold;
+}
+
+.accordion-body {
+    background-color: #F6ECE2;
+}
+
+.accordion-button:focus {
+    outline: none !important;
+}

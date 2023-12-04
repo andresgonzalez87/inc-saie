@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5 text-center">
+    <span class="title">{{title}}</span>
+    <div class="login-container">
+    <form class="mt-5" [formGroup]="loginForm">
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Usuario" formControlName="user">
+            <div class="text-danger float-start"
+                *ngIf="loginForm.get('user')?.errors && loginForm.get('user')?.touched"><span>El usuario <strong>es
+                        obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control form-control-lg" placeholder="Contraseña"
+                formControlName="password">
+            <div class="text-danger float-start"
+                *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched"><span>La contraseña
+                    <strong>es obligatoria</strong></span></div>
+        </div>
+        <div class="mt-5">
+            <button class="btn btn-success float-start" [disabled]="loginForm.invalid" routerLink="/coordinacion"
+                >Iniciar Sesión</button>
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5 text-center">
+    <span class="title">{{title}}</span>
+    <button class="btn btn-success float-end" routerLink="/crear-paciente">NUEVO</button>
+</div>
+
+<div class="container mt-5">
+    <div class="table-responsive">
+        <table *ngIf="listPatients.length>0" class="table table-striped mt-5 mx-auto">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Obra Social</th>
+            <th scope="col">Diagnóstico</th>
+            <th scope="col">Contacto</th>
+            <th scope="col">Profesional</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Escuela</th>
+            <th scope="col">Dirección escula</th>
+            <th scope="col">Contacto escuela</th>
+            <th scope="col">Maestra</th>
+            <th scope="col">Contacto maestra</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let patient of listPatients">
+            <th scope="row">{{patient.name | titlecase }}</th>
+            <td>{{patient.age}}</td>
+            <td>{{patient.socialWork | titlecase}}</td>
+            <td>{{patient.diagnosis | titlecase}}</td>
+            <td>{{patient.contact}}</td>
+            <td>{{patient.professional | titlecase}}</td>
+            <td>{{patient.service | titlecase}}</td>
+            <td>{{patient.school | titlecase}}</td>
+            <td>{{patient.schoolAddress | titlecase}}</td>
+            <td>{{patient.schoolContact}}</td>
+            <td>{{patient.teacher | titlecase}}</td>
+            <td>{{patient.teacherContact}}</td>
+            <td><i [routerLink]="['/editar-paciente', patient._id]" class=" fas fa-solid fa-pen-to-square text-primary"></i><i (click)="deletePatient(patient._id)" class="fas fa-solid fa-trash text-danger"></i></td>
+        </tr>
+    </tbody>
+</table>
+<h5 style="text-align: center; margin-top: 10px;" *ngIf="listPatients.length==0">No hay pacientes ingrsados</h5>

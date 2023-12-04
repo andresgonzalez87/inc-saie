@@ -1,0 +1,80 @@
+const Professional = require("../models/Professional");
+
+
+exports.professionalController = {
+
+    createProfessional: async (req, res) => {
+      try {
+        let professional;
+        //creamos el profesional
+        professional = Professional(req.body);
+        await professional.save();
+        res.send(professional);
+
+        
+      } catch (error) {
+        console.log(error)
+        res.status(500).send('Hubo un error');
+      }
+    },
+
+    getProfessionals: async (req,res) => {
+      try {
+        const professionals = await Professional.find();
+        res.json(professionals)
+      } catch (error) {
+        console.log(error)
+        res.status(500).send('Hubo un error');
+      }
+    },
+
+    updateProfessional: async (req,res) => {
+      try {
+        const { name, title, contact, patients } = req.body;
+        let professional = await Professional.findById(req.params.id);
+        if (!professional) {
+          res.status(404).json({msg: 'No existe el profesional'})
+        }
+        profssional.name = name;
+        professional.title = title;
+        professional.contact = contact;
+        professional.patients = patients;
+
+        professional = await Professional.findOneAndUpdate({_id: req.params.id}, professional, {new: true});
+        res.json(professional);
+        
+      } catch (error) {
+        console.log(error)
+        res.status(500).send('Hubo un error');
+      }
+    },
+
+    getProfessional: async (req,res) => {
+      try {
+        let professional = await Professional.findById(req.params.id);
+        if (!professional) {
+          res.status(404).json({msg: 'No existe el Profesional'})
+        }
+        res.json(professional);
+      } catch (error) {
+        console.log(error)
+        res.status(500).send('Hubo un error');
+      }
+    },
+
+    deleteProfessional: async (req,res) => {
+      try {
+        const profesional = await Professional.findById(req.params.id);
+        if (!profesional) {
+          return res.status(404).json({msg: 'No existe el profesional'})
+        }
+        // await Profssional.findOneAndDelete({_id: req.params.id});
+        await Professional.deleteOne();
+        res.json({msg: 'Profesional eliminado correctamente'});
+      } catch (error) {
+        console.log(error)
+        res.status(500).send('Hubo un error');
+      }
+    },
+
+  };

@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5 text-center">
+    <span class="title">NUEVO PROFESIONAL</span>
+    <form class="mt-5" [formGroup]="professionalForm">
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Nombre" formControlName="name">
+            <div class="text-danger float-start" *ngIf="professionalForm.get('name')?.errors && professionalForm.get('name')?.touched"><span>El nombre <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Título" formControlName="title">
+            <div class="text-danger float-start" *ngIf="professionalForm.get('title')?.errors && professionalForm.get('title')?.touched"><span>El título <strong>es obligatoria</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control form-control-lg" placeholder="Contácto" formControlName="contact">
+            <div class="text-danger float-start" *ngIf="professionalForm.get('contact')?.errors && professionalForm.get('contact')?.touched"><span>El contácto <strong>es obligatorio</strong></span></div>
+        </div>
+        <div class="mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Pacientes"formControlName="patients">
+            <div class="text-danger float-start" *ngIf="professionalForm.get('patients')?.errors && professionalForm.get('patients')?.touched"><span>Los pacientes <strong>son obligatorios</strong></span></div>
+        </div>
+        <div class="mt-5">
+            <button class="btn btn-secondary btn-lg float-start" routerLink="/profesionales">VOLVER</button>
+            <button class="btn btn-success btn-lg float-end" [disabled]="professionalForm.invalid" (click)="addProfessional()">ACEPTAR</button>
+        </div>
+    </form>
